@@ -12,6 +12,9 @@ if (PASS) {
 }
 app.use(express.json({ limit: '2mb' }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
 
 // Postgres when DATABASE_URL is set (Render), otherwise a local JSON file.
 let pool = null;
